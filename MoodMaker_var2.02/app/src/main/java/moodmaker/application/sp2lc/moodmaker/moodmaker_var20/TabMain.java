@@ -59,9 +59,11 @@ public class TabMain extends FragmentActivity  implements TabHost.OnTabChangeLis
             FragmentTransaction fragmentTransaction
                     = getSupportFragmentManager().beginTransaction();
             if("tab1" == tabId){
-                fragmentTransaction.setCustomAnimations(
-                        R.anim.fragment_slide_left_enter,
-                        R.anim.fragment_slide_left_exit);
+                if(mLastTabId == "tab2" || mLastTabId == "tab3") {
+                    fragmentTransaction.setCustomAnimations(
+                            R.anim.fragment_slide_left_enter,
+                            R.anim.fragment_slide_left_exit);
+                }
                 fragmentTransaction
                         .replace(R.id.realtabcontent, new ModeTab());
             }else if("tab2" == tabId){
